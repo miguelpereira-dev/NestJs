@@ -11,17 +11,13 @@ import { Livro } from './livros/livro.model';
 	imports: [
 		ConfigModule.forRoot(),
 		TypeOrmModule.forRoot({
-			type: 'mysql',
-			host: 'localhost',
-			port: 3306,
-			username: process.env.DB_USERNAME,
-			password: process.env.DB_PASSWORD,
-			database: 'nest_livraria',
+			type: 'sqlite',
+			database: './src/db',
 			entities: [Livro],
 			autoLoadEntities: true,
 			synchronize: true,
 		}),
-		TypeOrmModule.forFeature([Livro])
+		TypeOrmModule.forFeature([Livro]),
 	],
 	controllers: [AppController, LivrosController],
 	providers: [AppService, LivrosService],
